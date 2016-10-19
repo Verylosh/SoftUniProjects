@@ -1,29 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
-namespace _1Exer
+namespace _2Exer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            long[] input = Console.ReadLine().Split().Select(long.Parse).ToArray();
-            long fromBase = input[0];
-            long value = input[1];
+            BigInteger[] input = Console.ReadLine().Split().Select(BigInteger.Parse).ToArray();
+            BigInteger fromBase = input[0];
+            BigInteger value = input[1];
 
-            long result = FromBaseNToBaseTen(value, fromBase);
+            BigInteger result = FromBaseNToBaseTen(value, fromBase);
 
             Console.WriteLine(result);
 
         }
-        public static long FromBaseNToBaseTen(long value, long fromBase)
+        public static BigInteger FromBaseNToBaseTen(BigInteger value, BigInteger fromBase)
         {
             string number = value.ToString();
-            long n = 1;
-            long result = 0;
+            BigInteger n = 1;
+            BigInteger result = 0;
 
             for (int i = number.Length - 1; i >= 0; --i)
             {
