@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _1Exer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] input = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int toBase = input[0];
+            int value = input[1];
+
+            string result = Int32ToString(value, toBase);
+
+            Console.WriteLine(result);
+
+        }
+        public static string Int32ToString(int value, int toBase)
+        {
+            string result = string.Empty;
+            do
+            {
+                result = "0123456789ABCDEF"[value % toBase] + result;
+                value /= toBase;
+            }
+            while (value > 0);
+
+            return result;
+        }
+    }
+}
