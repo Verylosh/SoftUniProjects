@@ -1,30 +1,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1Exer
+namespace newExercieONE
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int[] input = Console.ReadLine().Split().Select(int.Parse).ToArray();
-            int toBase = input[0];
-            int value = input[1];
+            BigInteger[] input = Console.ReadLine().Split().Select(BigInteger.Parse).ToArray();
 
-            string result = Int32ToString(value, toBase);
+            BigInteger type = new BigInteger();
+            BigInteger value = new BigInteger();
+
+            type = input[0];
+            value = input[1];
+
+            string result = FromBaseTemToBaseN(value, type);
 
             Console.WriteLine(result);
-
         }
-        public static string Int32ToString(int value, int toBase)
+        public static string FromBaseTemToBaseN(BigInteger value, BigInteger toBase)
         {
             string result = string.Empty;
+
             do
             {
-                result = "0123456789ABCDEF"[value % toBase] + result;
+                result = value % toBase + result;
                 value /= toBase;
             }
             while (value > 0);
