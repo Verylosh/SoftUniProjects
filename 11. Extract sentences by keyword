@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace _11.Extract_sentences_by_keyword
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string theWord = Console.ReadLine();
+            char[] symbolsForText = new char[] { '.', '!', '?' };
+            char[] symbolsForSentenses = new char[]
+            { ' ', '-', '_', ',', '\"', ';', ':', ':','(',')','{','}','[',']','\\', '/','@','<','>','+','*','#','$','%','^','&','=','|','`','~','\'' };
+            string text = Console.ReadLine();
+            //string[] textSplit = Regex.Split(text, @"(?<=[.!\?])");
+            string[] textSplit = text
+                .Split(symbolsForText, StringSplitOptions.RemoveEmptyEntries)
+                .ToArray();
+
+            for (int i = 0; i < textSplit.Length; i++)
+            {
+                string[] sentence = textSplit[i]
+                    .Split(symbolsForSentenses, StringSplitOptions.RemoveEmptyEntries)
+                    .ToArray();
+                for (int j = 0; j < sentence.Length; j++)
+                {
+                    if (sentence[j] == theWord)
+                    {
+                        Console.WriteLine(textSplit[i].Trim());
+
+                    }
+                }
+            }
+        }
+    }
+}
